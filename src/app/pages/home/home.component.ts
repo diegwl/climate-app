@@ -15,12 +15,12 @@ export class HomeComponent implements OnInit {
 
   _climateService = inject(ClimateService)
 
-  // climateData?: Observable<ClimateInterface>
+  climateDataOb?: Observable<ClimateInterface>
 
   climateData?: ClimateInterface
 
   ngOnInit() {
-    // this.climateData = this._climateService.getClimate();
+    this.climateDataOb = this._climateService.getClimate();
     this._climateService.getClimate().subscribe({next: (data) => {
       this.climateData = data as ClimateInterface
     }, complete: () => {

@@ -5,5 +5,7 @@ export interface ClimateInterface {
   humidity: number,
   wind_speed: number,
   weather: string,
+  weather_desc: string,
   city_name: string,
+  icon: string,
 }

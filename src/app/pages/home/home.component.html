@@ -3,8 +3,47 @@
   </div>
 </main> -->
 <!-- <h1>teste</h1> -->
-<div class="h-screen w-screen flex bg-[#8E87FA] items-center justify-center">
-  <div class="h-3/5 w-3/5 flex bg-violet-500 rounded-xl">
+<div class="h-screen w-screen flex bg-[url('/assets/svg/Background.svg')] bg-no-repeat bg-cover items-center justify-center">
+  <div *ngIf="climateDataOb | async as data" class="min-h-96 min-w-96 flex flex-col bg-violet-500 rounded-xl flex items-center justify-between p-4">
+
+    <section class="flex h-fit w-full justify-between">
+      <img class="h-10 w-10" src="https://openweathermap.org/img/wn/{{ data.icon }}.png" alt="nuvem">
+      <h3 class="self-center text-violet-300">{{ data.city_name }}</h3>
+    </section>
+
+    <section>
+      <section class="flex justify-center gap-2 pr-1">
+        <h2 class="text-slate-100 text-lg font-bold">{{ data.temp_max }}°</h2>
+        <h2 class="text-violet-300 text-lg font-bold">{{ data.temp_min }}°</h2>
+      </section>
+      <section>
+        <h1 class="text-slate-100 mt-0 text-8xl font-bold pl-7">{{ data.temp }}°</h1>
+      </section>
+    </section>
+
+    <section class="grid grid-cols-3 mb-8 pt-4 w-96 place-items-center h-20 gap-2">
+      <div class="bg-purple-900/20 rounded-xl w-full h-20">
+        <img src="/assets/svg/vento.svg" alt="vento">
+        <section>
+          <h2>Vento</h2>
+          <h3>{{ data.wind_speed }}m/s</h3>
+        </section>
+      </div>
+      <div class="bg-purple-900/20 rounded-xl w-full h-20">
+        <img src="/assets/svg/umidade.svg">
+        <section>
+          <h2>Umidade</h2>
+          <h3>{{ data.humidity }}%</h3>
+        </section>
+      </div>
+      <div class="bg-purple-900/20 rounded-xl w-full h-20">
+        <img src="/assets/svg/clima.svg">
+        <section>
+          <h2>Clima</h2>
+          <h3 class="text-sm">{{ data.weather_desc }}</h3>
+        </section>
+      </div>
+    </section>
 
   </div>
 </div>
