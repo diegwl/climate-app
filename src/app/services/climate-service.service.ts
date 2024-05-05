@@ -11,14 +11,14 @@ export class ClimateService {
   constructor(private http: HttpClient) { }
 
   apiKey = "5254e4752733f27384f27d7aae8d2f6a"
-  lat = -22.90
-  lon = -47.06
-  cidade = "campinas"
+  cidade?: string;
 
   // con = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}`;
-  con = `https://api.openweathermap.org/data/2.5/weather?q=${this.cidade}&units=metric&appid=${this.apiKey}&lang=pt_br`;
+  con?: string;
 
-  getClimate() {
+  getClimate(cidade: string) {
+    this.cidade = cidade;
+    this.con = `https://api.openweathermap.org/data/2.5/weather?q=${this.cidade}&units=metric&appid=${this.apiKey}&lang=pt_br`;
     return this.http.get(this.con).pipe(
       map((val: any) => {
         return {
